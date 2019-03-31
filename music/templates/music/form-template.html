@@ -1,0 +1,11 @@
+
+ <div class="box" style="padding-top: 155px;">
+    {% for x in form%}
+        <div class="col-sm-offset-2 col-sm-10">
+            <span class="text-danger small">{{ x.errors }}</span>
+        </div>
+
+        <label class="control-lable col-sm-2">{{ x.label_tag }}</label> <!--pta nahi label_tag q liya h-->
+        <div class="col-sm-10">{{x}}</div>
+    {% endfor %}
+</div>
