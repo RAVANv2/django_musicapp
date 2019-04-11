@@ -1,8 +1,8 @@
 {% extends 'music/basic.html' %}
 {% block title %}Album Detail{% endblock %}
 {% block html %}
-    <div class="box" style="padding-top: 140px;">
-        <img src="{{ album.album_logo }}">
+    <div class="box" style="padding-top: 161px;">
+        <img src="{{ album.album_logo.url }}" style="height: 250px">
 
         <h1>{{ album.album_title }}</h1>
         <h2>{{ album.artist }}</h2>
@@ -17,7 +17,7 @@
             <p><b>{{ error_message }}</b></p>
         {% endif %}
 
-        <form action="/music/{{ album_id }}/favorite" method="post">
+        <form action="{% url 'music:detail' album.id %}" method="post">
             {% csrf_token %}
             {% for song in album.song_set.all %}
                 <input type="radio" id="song{{ forloop.counter }}" name="song" value="{{ song.id }}">
@@ -26,6 +26,9 @@
                     {% if song.is_favorite %}
                         <img src="http://i.imgur.com/b9b13Rd.png"/>
                     {% endif %}
+                <p><audio controls="controls">
+                    <source src="{{ song.audio_track.url }}" type="audio/mpeg"/>
+                </audio> </p>
                 </label><br>
              {% endfor %}
 

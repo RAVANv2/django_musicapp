@@ -1,20 +1,24 @@
 {% extends 'music/basic.html' %}
 {% block title %}Rajput{% endblock %}
 {% block html %}
-     <div class="box" style="padding-top: 140px;">
+     <div class="box" style="padding-top: 150px;">
         {% if all_album %}
             <ul>
                  <h1>Here all my albums</h1>
                 {% for x in all_album %}
                     <li><a href="/music/{{ x.id }}">{{ x.album_title }}</a></li>
                     <!--DELETE-->
-                    <form action="{% url 'music:album-delete' album.id%}" method="post" style="display: inline;">
+                    <form action="{% url 'music:album-delete' x.id %}" method="post" style="display: inline;">
                         {% csrf_token %}
                         <input type="hidden" name = "album_id" value="{{ album.id }}">
                         <button type="submit" class="btn btn-default btn-sm">
                             <i class="fa fa-trash" aria-hidden="true"></i>
                         </button>
                     </form>
+                     <!--ALBUM LOGO-->
+                    <a href="{% url 'music:detail' x.id %}">
+                        <img src="{{ x.album_logo.url }}" class="img-responsive" style="height: 250px;"> <!--url is used because we need the path of image store in databse-->
+                    </a>
                 {% endfor %}
             </ul>
         {% else %}

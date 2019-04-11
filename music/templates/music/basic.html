@@ -17,7 +17,7 @@
                           <i class="fa fa-bars"></i>
                         </button>
                         <div class="logo-wrapper">
-                            <a class="navbar-brand" href="#templates" style="word-spacing: 3em;">
+                            <a class="navbar-brand" href="{% url 'music:index' %}" style="word-spacing: 3em;">
                                <span>PagalWorld</span>
                                 <span> <i class="fa fa-music" aria-hidden="true" style="position:absolute; margin-left:-25px;" ></i>Albums</span>
                                 <span><i class="fa fa-play" aria-hidden="true" style="position: absolute; margin-left:-25px "></i>Songs</span>
@@ -37,6 +37,9 @@
                                     <a href="" style="text-decoration: none;">
 
                                         <span style="text-decoration: none;margin-left: 25px"><i class="fa fa-user-plus" aria-hidden="true"></i>Logout</span>
+                                    </a>
+                                    <a href="{% url 'music:register' %}" style="text-decoration: none;">
+                                        <span style="padding-left: 35px;"><i class="fa fa-registered" aria-hidden="true"></i>Register</span>
                                     </a>
                                 </li>
 
